@@ -15,7 +15,6 @@ class IvoryFs(fuse.Operations):
         self.__mirrored_dir = mirrored_dir
 
     def __call__(self, op, path, *args):
-        print("called " + op)
         return super(self.__class__, self).__call__(op, self.__mirrored_dir + path, *args)
 
     def access(self, path, mode):
