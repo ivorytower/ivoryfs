@@ -21,7 +21,7 @@ class IvoryFs(fuse.Operations):
         if not os.access(path, mode):
             raise FuseOSError(EACCES)
 
-    def getattr(self, path, fh = None):
+    def getattr(self, path, fh=None):
         st = os.lstat(path)
         return dict((key, getattr(st, key)) for key in ("st_atime", "st_ctime", "st_gid", "st_mode", "st_mtime",
             "st_nlink", "st_size", "st_uid"))
@@ -44,4 +44,4 @@ class IvoryFs(fuse.Operations):
         return os.close(fh)
 
 if __name__ == "__main__":
-    fuse = FUSE(IvoryFs(sys.argv[2]), sys.argv[1], foreground = True, ro = True)
+    fuse = FUSE(IvoryFs(sys.argv[2]), sys.argv[1], foreground=True, ro=True)
