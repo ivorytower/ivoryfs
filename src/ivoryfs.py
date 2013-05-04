@@ -9,6 +9,7 @@ for p in ("../lib",
 
 import fuse
 from fuse import FUSE, FuseOSError
+from errno import EACCES
 
 class IvoryFs(fuse.Operations):
     def __init__(self, mirrored_dir):
